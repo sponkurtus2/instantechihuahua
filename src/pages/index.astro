@@ -156,8 +156,8 @@ const featuredPhotos = photos.slice(0, 3);
   }
   
   .header {
-    padding: 4rem 0 3rem;
-    margin-bottom: 4rem;
+    padding: 3rem 0 2rem;
+    margin-bottom: 2.5rem;
   }
 
   .header-content {
@@ -197,7 +197,7 @@ const featuredPhotos = photos.slice(0, 3);
   
   .intro-text {
     max-width: 800px;
-    margin: 0 auto 5rem;
+    margin: 0 auto 3rem;
     line-height: 1.7;
     color: #444;
     font-size: 1.1rem;
@@ -205,19 +205,19 @@ const featuredPhotos = photos.slice(0, 3);
   }
   
   .intro-text p {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: 300;
   }
   
   .featured-section {
-    margin-bottom: 6rem;
+    margin-bottom: 3.5rem;
   }
 
   .section-title {
     text-align: center;
     font-size: 2.2rem;
     font-weight: 300;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     color: #333;
     position: relative;
     letter-spacing: -0.5px;
@@ -229,7 +229,7 @@ const featuredPhotos = photos.slice(0, 3);
     width: 80px;
     height: 2px;
     background: linear-gradient(90deg, #4a6b8a, #8ba3c3);
-    margin: 1.5rem auto 0;
+    margin: 1rem auto 0;
     border-radius: 1px;
   }
   
@@ -305,13 +305,13 @@ const featuredPhotos = photos.slice(0, 3);
 
   /* Categories Section Styles */
   .categories-section {
-    margin-bottom: 6rem;
+    margin-bottom: 3.5rem;
   }
   
   .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
     max-width: 1000px;
     margin: 0 auto;
   }
@@ -382,8 +382,8 @@ const featuredPhotos = photos.slice(0, 3);
 
   /* Philosophy Section */
   .philosophy-section {
-    margin-bottom: 6rem;
-    padding: 4rem 0;
+    margin-bottom: 3.5rem;
+    padding: 3rem 0;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border-radius: 20px;
     position: relative;
@@ -400,29 +400,9 @@ const featuredPhotos = photos.slice(0, 3);
     font-size: 1.3rem;
     line-height: 1.6;
     color: #444;
-    font-style: italic;
     font-weight: 300;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     position: relative;
-  }
-
-  .philosophy-quote::before,
-  .philosophy-quote::after {
-    content: '"';
-    font-size: 4rem;
-    color: #8ba3c3;
-    position: absolute;
-    font-family: Georgia, serif;
-  }
-
-  .philosophy-quote::before {
-    top: -1rem;
-    left: -2rem;
-  }
-
-  .philosophy-quote::after {
-    bottom: -2rem;
-    right: -2rem;
   }
 
   .philosophy-attribution {
@@ -433,8 +413,8 @@ const featuredPhotos = photos.slice(0, 3);
   }
   
   .footer {
-    padding: 4rem 0 3rem;
-    margin-top: 6rem;
+    padding: 3rem 0 2.5rem;
+    margin-top: 3rem;
     border-top: 1px solid #f0f0f0;
   }
   
@@ -504,8 +484,8 @@ const featuredPhotos = photos.slice(0, 3);
 
   @media (max-width: 768px) {
     .header {
-      padding: 3rem 0 2rem;
-      margin-bottom: 3rem;
+      padding: 2.5rem 0 1.5rem;
+      margin-bottom: 2rem;
     }
     
     h1 {
@@ -518,17 +498,16 @@ const featuredPhotos = photos.slice(0, 3);
     
     .section-title {
       font-size: 1.8rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
     
     .intro-text {
-      margin-bottom: 4rem;
+      margin-bottom: 2.5rem;
       font-size: 1rem;
     }
     
     .categories-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     .category-card {
@@ -537,8 +516,8 @@ const featuredPhotos = photos.slice(0, 3);
     }
 
     .philosophy-section {
-      margin-bottom: 4rem;
-      padding: 3rem 0;
+      margin-bottom: 2.5rem;
+      padding: 2.5rem 0;
     }
 
     .philosophy-quote {
@@ -554,8 +533,8 @@ const featuredPhotos = photos.slice(0, 3);
     }
     
     .footer {
-      padding: 3rem 0 2rem;
-      margin-top: 4rem;
+      padding: 2.5rem 0 2rem;
+      margin-top: 2.5rem;
     }
   }
 
@@ -565,8 +544,8 @@ const featuredPhotos = photos.slice(0, 3);
     }
     
     .header {
-      padding: 2rem 0 1.5rem;
-      margin-bottom: 2rem;
+      padding: 2rem 0 1rem;
+      margin-bottom: 1.5rem;
     }
     
     h1 {
@@ -579,12 +558,12 @@ const featuredPhotos = photos.slice(0, 3);
     
     .section-title {
       font-size: 1.5rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     
     .categories-grid {
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 0.75rem;
     }
     
     .category-card {
@@ -598,11 +577,11 @@ const featuredPhotos = photos.slice(0, 3);
     }
     
     .intro-text {
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     .philosophy-section {
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
       padding: 2rem 0;
     }
 
