@@ -1,0 +1,117 @@
+---
+
+import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Acerca de - Chihuahua en el Instante">
+  <div class="container">
+    <header class="header">
+      <h1>Acerca de este proyecto</h1>
+      <a href="/" class="back-link">← Volver a la galería</a>
+    </header>
+
+    <main class="about-content">
+      <section>
+        <p>
+          Chihuahua es un lugar bello, con cosas buenas y malas, problemas (como cualquier otro estado), 
+          pero creo que la magia del instante existe.
+        </p>
+        
+        <p>
+          Justo eso es lo que quiero capturar con mi cámara (una Canon A1100). No soy un fotógrafo profesional, 
+          pero soy un programador algo creativo, al que le encanta salir a caminar y poner atención a las cosas 
+          que lo rodean: los árboles, las nubes, gente caminando, bailando, carros…
+        </p>
+        
+        <p>
+          Me gusta disfrutar y admirar las cosas, porque por más sencillas o comunes que sean, están ahí por algún motivo. 
+          Todo pasa por algo, y es interesante admirar y pensar cuál será la historia de esa cosa.
+        </p>
+      </section>
+      
+      <section class="acknowledgements">
+        <h2>Agradecimientos</h2>
+        <p>
+          Quiero agradecer a las personas que me dieron permiso de tomarles una fotografía para mi espacio digital. 
+          Sé que es raro que se te acerque un extraño, con cabello largo y una cámara, a pedirte fotos, y aun así aceptar.
+        </p>
+        
+        <p>
+          A todas aquellas personas que me apoyaron con fotos: gracias. Ustedes ahora forman parte de este espacio, 
+          y en algún futuro esto podrá servir como un baúl de recuerdos.
+        </p>
+        
+        <p>
+          También quiero agradecer a mis padres por todo el apoyo que me han dado. Todo lo que tengo ahora se lo debo a ellos. 
+          A mi gatita Blacky, quien me ha acompañado por mucho tiempo. A mis abuelos, por siempre ser tan cariñosos y amorosos 
+          conmigo desde niño. Y a mis amigos cercanos por ser buenos conmigo.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Disfrutemos el momento presente</p>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .header {
+    padding: 3rem 0 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .back-link {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  
+  .about-content {
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 3rem;
+  }
+  
+  .about-content section {
+    margin-bottom: 2.5rem;
+  }
+  
+  .about-content p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .acknowledgements h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    color: #888;
+    border-top: 1px solid #eaeaea;
+  }
+</style>

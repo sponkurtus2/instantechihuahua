@@ -1,0 +1,457 @@
+---
+import '../styles/global.css';
+
+import Layout from '../layouts/Layout.astro';
+
+// Importa imágenes directamente
+import snowImage from '../../public/images/snow.JPG';
+import utchImage from '../../public/images/utch.JPG';
+import fashionImage from '../../public/images/fashion.JPG';
+
+// Cargar información de las fotos
+const photoEntries = await Astro.glob('../content/photos/*.md');
+
+// Combina la información de contenido con las imágenes importadas
+const photos = photoEntries.map((entry, index) => {
+  // Asigna imágenes basado en el índice o algún identificador
+  const images = [snowImage, utchImage, fashionImage]; // Agrega más imágenes aquí según el orden
+  return {
+    ...entry,
+    image: images[index] || snowImage // Imagen por defecto
+  };
+});
+
+// Selecciona 3 fotos destacadas para el mosaico
+const featuredPhotos = photos.slice(0, 3);
+---
+
+<Layout title="Chihuahua en el Instante">
+  <div class="container">
+    <header class="header">
+      <h1>Chihuahua en el Instante</h1>
+      <p class="subtitle">Capturando la magia del momento presente</p>
+    </header>
+
+    <main class="main-content">
+      <section class="intro-text">
+        <p>
+          Las personas hacen cosas especiales sin darse cuenta, y estas cosas son tan instantáneas como para no notarlas. 
+          Pueden simplemente estar caminando, escribiendo, escuchando música, tomando fotografías o comiendo, 
+          pero lo importante es el momento: estar ahí haciendo esa actividad.
+        </p>
+        
+        <p>
+          Disfrutemos el momento presente. La vida no es eterna, no sirve de nada quejarnos siempre. 
+          Mejor hagamos actividades comunes y seamos felices.
+        </p>
+      </section>
+
+      <!-- Sección de fotos destacadas en mosaico -->
+      <section class="featured-section">
+        <h2 class="section-title">Momentos Destacados</h2>
+        <div class="mosaic-grid">
+          <div class="mosaic-left">
+            <div class="mosaic-item">
+              <img 
+                src={typeof featuredPhotos[0].image === 'string' ? featuredPhotos[0].image : featuredPhotos[0].image.src} 
+                alt={featuredPhotos[0].frontmatter.title}
+                loading="eager"
+                class="mosaic-image"
+              />
+              <div class="mosaic-overlay">
+                <h3>{featuredPhotos[0].frontmatter.title}</h3>
+              </div>
+            </div>
+            <div class="mosaic-item">
+              <img 
+                src={typeof featuredPhotos[1].image === 'string' ? featuredPhotos[1].image : featuredPhotos[1].image.src} 
+                alt={featuredPhotos[1].frontmatter.title}
+                loading="lazy"
+                class="mosaic-image"
+              />
+              <div class="mosaic-overlay">
+                <h3>{featuredPhotos[1].frontmatter.title}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="mosaic-right">
+            <div class="mosaic-item">
+              <img 
+                src={typeof featuredPhotos[2].image === 'string' ? featuredPhotos[2].image : featuredPhotos[2].image.src} 
+                alt={featuredPhotos[2].frontmatter.title}
+                loading="lazy"
+                class="mosaic-image"
+              />
+              <div class="mosaic-overlay">
+                <h3>{featuredPhotos[2].frontmatter.title}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección de categorías -->
+      <section class="categories-section">
+        <h2 class="section-title">Explorar por Categorías</h2>
+        <div class="categories-grid">
+          <a href="#" class="category-card" data-category="naturaleza">
+            <span class="category-icon">🌳</span>
+            <span class="category-name">Naturaleza</span>
+          </a>
+          <a href="#" class="category-card" data-category="urbano">
+            <span class="category-icon">🏙️</span>
+            <span class="category-name">Urbano</span>
+          </a>
+          <a href="#" class="category-card" data-category="gente">
+            <span class="category-icon">👥</span>
+            <span class="category-name">Gente</span>
+          </a>
+          <a href="#" class="category-card" data-category="cultural">
+            <span class="category-icon">🎭</span>
+            <span class="category-name">Cultural</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Hecho con ❤️ en Chihuahua</p>
+      <a href="/acerca">Acerca de este proyecto</a>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 3rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    color: #333;
+    letter-spacing: -0.5px;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-style: italic;
+    margin: 0;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .intro-text {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    line-height: 1.7;
+    color: #444;
+    font-size: 1.1rem;
+  }
+  
+  .intro-text p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    color: #333;
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #4a6b8a, #8ba3c3);
+    margin: 1rem auto;
+  }
+  
+  .mosaic-grid {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+    .mosaic-left {
+    flex: 1.2; /* Aumentado ligeramente para compensar el espacio vertical */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+.mosaic-right {
+    flex: 0.8; /* Reducido para que ocupe menos espacio horizontal */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrado horizontal */
+  }
+  
+.mosaic-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Ocupa toda la altura disponible */
+  }
+
+  .mosaic-left .mosaic-item {
+    height: calc(50% - 0.5rem); /* Mitad del espacio menos la mitad del gap */
+    aspect-ratio: 4/3;
+  }
+  
+  .mosaic-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .mosaic-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  
+  .mosaic-item:hover .mosaic-image {
+    transform: scale(1.03);
+  }
+  
+  .mosaic-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    padding: 1rem 1rem 0.8rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .mosaic-item:hover .mosaic-overlay {
+    transform: translateY(0);
+  }
+  
+  .mosaic-overlay h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 968px) {
+    .mosaic-grid {
+      flex-direction: column;
+      max-width: 500px;
+    }
+    
+    .mosaic-right {
+      align-items: flex-start;
+    }
+    
+    .mosaic-item {
+      max-height: 180px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mosaic-grid {
+      max-width: 400px;
+    }
+    
+    .mosaic-item {
+      max-height: 160px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mosaic-grid {
+      max-width: 300px;
+    }
+    
+    .mosaic-item {
+      max-height: 140px;
+      border-radius: 6px;
+    }
+    
+    .mosaic-overlay h3 {
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Categories Section Styles */
+  .categories-section {
+    margin-bottom: 5rem;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    border: 1px solid #eaeaea;
+    min-height: 150px;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: #4a6b8a;
+  }
+  
+  .category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .category-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    color: #888;
+    border-top: 1px solid #eaeaea;
+  }
+  
+  .footer p {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer a:hover {
+    color: #4a6b8a;
+    text-decoration: underline;
+  }
+
+  /* Responsive design */
+  @media (max-width: 968px) {
+    .mosaic-grid {
+      flex-direction: column;
+    }
+    
+    .mosaic-right {
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      padding: 2rem 0 1.5rem;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .subtitle {
+      font-size: 1rem;
+    }
+    
+    .section-title {
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    
+    .intro-text {
+      margin-bottom: 3rem;
+      font-size: 1rem;
+    }
+    
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer {
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 0.5rem;
+    }
+    
+    .header {
+      padding: 1.5rem 0 1rem;
+    }
+    
+    h1 {
+      font-size: 1.75rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+    }
+    
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .category-card {
+      min-height: 120px;
+      padding: 1.5rem;
+    }
+    
+    .category-icon {
+      font-size: 2rem;
+    }
+    
+    .intro-text {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  /* Optimizaciones de rendimiento */
+  .mosaic-image {
+    will-change: transform;
+  }
+  
+  .category-card {
+    will-change: transform;
+  }
+</style>

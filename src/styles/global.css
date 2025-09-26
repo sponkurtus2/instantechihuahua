@@ -1,0 +1,138 @@
+/* Reset básico y estilos globales optimizados */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fafafa;
+  padding: 0;
+  margin: 0;
+  text-rendering: optimizeSpeed;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mejora de rendimiento para imágenes */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+a {
+  color: #4a6b8a;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2c3e50;
+}
+
+/* Prevención de layout shift */
+.featured-item,
+.category-card,
+.photo-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimizaciones de fuentes */
+h1, h2, h3, h4, h5, h6 {
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mejora de contraste para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+    color: #eaeaea;
+  }
+  
+  .header {
+    border-bottom-color: #333;
+  }
+  
+  h1, h2, h3, .section-title {
+    color: #eaeaea;
+  }
+  
+  .subtitle {
+    color: #aaa;
+  }
+  
+  .intro-text {
+    color: #ccc;
+  }
+  
+  .category-card {
+    background-color: #2a2a2a;
+    border-color: #333;
+    color: #eaeaea;
+  }
+  
+  .footer {
+    color: #888;
+    border-top-color: #333;
+  }
+  
+  .footer a {
+    color: #aaa;
+  }
+  
+  .footer a:hover {
+    color: #8ba3c3;
+  }
+}
+
+/* Focus visible para accesibilidad */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #4a6b8a;
+  outline-offset: 2px;
+}
+
+/* Mejora de rendimiento para animaciones */
+@media (prefers-reduced-motion: no-preference) {
+  .featured-item,
+  .category-card,
+  .photo-card {
+    will-change: transform;
+  }
+}
+
+
