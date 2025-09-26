@@ -1,11 +1,12 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
-
-import '../styles/global.css';
 ---
 
 <!DOCTYPE html>
@@ -16,6 +17,9 @@ import '../styles/global.css';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content="Capturando la magia del momento presente en Chihuahua" />
     <title>{title}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js" defer></script>
+    
     <style>
       * {
         box-sizing: border-box;
@@ -29,17 +33,43 @@ import '../styles/global.css';
         padding: 0;
         margin: 0;
       }
+
+    .clickable-photo {
+        cursor: pointer;
+      }
     </style>
     
     <!-- Preload crítico -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <ViewTransitions />
   </head>
   <body>
     <slot />
     
     <!-- Script de optimización para lazy loading -->
     <script>
+    function goBack(event) {
+      // Prevenimos que el enlace navegue a su href
+      event.preventDefault();
+      // Usamos el historial del navegador para ir hacia atrás
+      history.back();
+    }
+
+    function setupBackLinks() {
+      // Buscamos todos los enlaces con nuestra clase especial
+      const backLinks = document.querySelectorAll('.js-back-link');
+      // A cada uno le asignamos la función goBack al hacerle click
+      backLinks.forEach(link => {
+        link.addEventListener('click', goBack);
+      });
+    }
+
+    // Ejecutamos la función cuando la página carga inicialmente
+    document.addEventListener('DOMContentLoaded', setupBackLinks);
+    // Y muy importante con View Transitions: la ejecutamos también después de cada cambio de página
+    document.addEventListener('astro:after-swap', setupBackLinks);
       document.addEventListener('DOMContentLoaded', function() {
         // Optimización para imágenes lazy
         const lazyImages = document.querySelectorAll('img[loading="lazy"]');
