@@ -1,0 +1,370 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+
+// Placeholder photos for the mosaic - these would be replaced with actual nature photos
+const naturePhotos = [
+  {
+    id: 1,
+    title: "Amanecer en la Sierra",
+    image: "https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=800",
+    aspectRatio: "landscape"
+  },
+  {
+    id: 2,
+    title: "Cactus del Desierto",
+    image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=600",
+    aspectRatio: "portrait"
+  },
+  {
+    id: 3,
+    title: "Río en las Montañas",
+    image: "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=800",
+    aspectRatio: "landscape"
+  },
+  {
+    id: 4,
+    title: "Flores Silvestres",
+    image: "https://images.pexels.com/photos/1172849/pexels-photo-1172849.jpeg?auto=compress&cs=tinysrgb&w=600",
+    aspectRatio: "square"
+  },
+  {
+    id: 5,
+    title: "Atardecer Dorado",
+    image: "https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&w=800",
+    aspectRatio: "landscape"
+  },
+  {
+    id: 6,
+    title: "Árbol Solitario",
+    image: "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=600",
+    aspectRatio: "portrait"
+  },
+  {
+    id: 7,
+    title: "Nubes y Cielo",
+    image: "https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&w=800",
+    aspectRatio: "landscape"
+  },
+  {
+    id: 8,
+    title: "Rocas y Vegetación",
+    image: "https://images.pexels.com/photos/1323712/pexels-photo-1323712.jpeg?auto=compress&cs=tinysrgb&w=600",
+    aspectRatio: "square"
+  },
+  {
+    id: 9,
+    title: "Sendero Natural",
+    image: "https://images.pexels.com/photos/1578662/pexels-photo-1578662.jpeg?auto=compress&cs=tinysrgb&w=600",
+    aspectRatio: "portrait"
+  }
+];
+---
+
+<Layout title="Naturaleza - Chihuahua en el Instante">
+  <div class="container">
+    <header class="album-header">
+      <nav class="breadcrumb">
+        <a href="/" class="breadcrumb-link">Inicio</a>
+        <span class="breadcrumb-separator">→</span>
+        <span class="breadcrumb-current">Naturaleza</span>
+      </nav>
+      
+      <div class="album-title-section">
+        <h1 class="album-title">Naturaleza</h1>
+        <p class="album-subtitle">La belleza natural de Chihuahua capturada en el momento perfecto</p>
+        <div class="album-stats">
+          <span class="photo-count">{naturePhotos.length} fotografías</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="album-content">
+      <div class="mosaic-container">
+        <div class="photo-mosaic">
+          {naturePhotos.map((photo, index) => (
+            <div 
+              class={`mosaic-photo mosaic-photo--${photo.aspectRatio}`}
+              data-photo-id={photo.id}
+            >
+              <img 
+                src={photo.image}
+                alt={photo.title}
+                loading={index < 6 ? 'eager' : 'lazy'}
+                class="mosaic-image"
+              />
+              <div class="photo-info">
+                <h3 class="photo-title">{photo.title}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+
+    <footer class="album-footer">
+      <div class="footer-content">
+        <p class="footer-text">Cada imagen cuenta una historia del momento presente</p>
+        <a href="/" class="back-home">← Volver al inicio</a>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    min-height: 100vh;
+  }
+
+  /* Header Styles */
+  .album-header {
+    padding: 2rem 0 3rem;
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb-link {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb-link:hover {
+    color: #4a6b8a;
+  }
+
+  .breadcrumb-separator {
+    margin: 0 0.5rem;
+    color: #ccc;
+  }
+
+  .breadcrumb-current {
+    color: #333;
+    font-weight: 500;
+  }
+
+  .album-title-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .album-title {
+    font-size: 3.5rem;
+    font-weight: 200;
+    color: #333;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+  }
+
+  .album-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .album-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .photo-count {
+    color: #888;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    background: #f8f9fa;
+    border-radius: 20px;
+  }
+
+  /* Mosaic Styles */
+  .mosaic-container {
+    margin-bottom: 4rem;
+  }
+
+  .photo-mosaic {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 1rem;
+    grid-auto-flow: dense;
+  }
+
+  .mosaic-photo {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f5f5f5;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .mosaic-photo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Different aspect ratios for variety */
+  .mosaic-photo--landscape {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .mosaic-photo--portrait {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .mosaic-photo--square {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .mosaic-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    padding: 2rem 1rem 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mosaic-photo:hover .photo-info {
+    opacity: 1;
+  }
+
+  .photo-title {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  /* Footer Styles */
+  .album-footer {
+    padding: 3rem 0;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 2rem;
+  }
+
+  .footer-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .footer-text {
+    color: #666;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .back-home {
+    color: #4a6b8a;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #4a6b8a;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .back-home:hover {
+    background: #4a6b8a;
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .photo-mosaic {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .album-title {
+      font-size: 2.5rem;
+    }
+
+    .album-subtitle {
+      font-size: 1rem;
+    }
+
+    .photo-mosaic {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-auto-rows: 180px;
+      gap: 0.75rem;
+    }
+
+    .mosaic-photo--landscape {
+      grid-column: span 1;
+    }
+
+    .mosaic-photo--portrait {
+      grid-row: span 1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 0.5rem;
+    }
+
+    .album-header {
+      padding: 1.5rem 0 2rem;
+    }
+
+    .album-title {
+      font-size: 2rem;
+    }
+
+    .photo-mosaic {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 200px;
+      gap: 0.5rem;
+    }
+
+    .mosaic-photo--landscape,
+    .mosaic-photo--portrait,
+    .mosaic-photo--square {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+
+    .album-stats {
+      gap: 1rem;
+    }
+  }
+
+  /* Performance optimizations */
+  .mosaic-photo {
+    will-change: transform;
+  }
+
+  .mosaic-image {
+    will-change: auto;
+  }
+</style>
