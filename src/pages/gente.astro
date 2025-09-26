@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 
 // Carga dinámica de los archivos .md desde la carpeta de Urbano
-const urbanPhotos = await Astro.glob('../content/photos/Naturaleza/*.md');
+const urbanPhotos = await Astro.glob('../content/photos/Gente/*.md');
 ---
 
 <Layout title="Naturaleza - Chihuahua en el Instante">
@@ -12,7 +12,7 @@ const urbanPhotos = await Astro.glob('../content/photos/Naturaleza/*.md');
       <nav class="breadcrumb">
         <a href="/" class="breadcrumb-link js-back-link">Inicio</a>
         <span class="breadcrumb-separator">→</span>
-        <span class="breadcrumb-current">Naturaleza</span>
+        <span class="breadcrumb-current">Gente</span>
       </nav>
       
       <div class="album-title-section">

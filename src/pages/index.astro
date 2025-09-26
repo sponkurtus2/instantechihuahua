@@ -51,7 +51,6 @@ const featuredPhotos = photos.slice(0, 3);
 
       <!-- Sección de fotos destacadas en mosaico -->
       <section class="featured-section">
-        <h2 class="section-title">Momentos Destacados</h2>
         <div class="mosaic-grid">
           <div class="mosaic-left">
             <div class="mosaic-item">
@@ -61,9 +60,6 @@ const featuredPhotos = photos.slice(0, 3);
                 loading="eager"
                 class="mosaic-image"
               />
-              <div class="mosaic-overlay">
-                <h3>{featuredPhotos[0].frontmatter.title}</h3>
-              </div>
             </div>
             <div class="mosaic-item">
               <img 
@@ -72,9 +68,6 @@ const featuredPhotos = photos.slice(0, 3);
                 loading="lazy"
                 class="mosaic-image"
               />
-              <div class="mosaic-overlay">
-                <h3>{featuredPhotos[1].frontmatter.title}</h3>
-              </div>
             </div>
           </div>
           <div class="mosaic-right">
@@ -85,9 +78,6 @@ const featuredPhotos = photos.slice(0, 3);
                 loading="lazy"
                 class="mosaic-image"
               />
-              <div class="mosaic-overlay">
-                <h3>{featuredPhotos[2].frontmatter.title}</h3>
-              </div>
             </div>
           </div>
         </div>
@@ -107,12 +97,12 @@ const featuredPhotos = photos.slice(0, 3);
             <span class="category-name">Urbano</span>
             <span class="category-description">Arquitectura y ciudad</span>
           </a>
-          <a href="#" class="category-card" data-category="gente">
+          <a href="/gente" class="category-card" data-category="gente">
             <span class="category-icon">👥</span>
             <span class="category-name">Gente</span>
             <span class="category-description">Momentos humanos</span>
           </a>
-          <a href="#" class="category-card" data-category="cultural">
+          <a href="/cultural" class="category-card" data-category="cultural">
             <span class="category-icon">🎭</span>
             <span class="category-name">Cultural</span>
             <span class="category-description">Tradiciones y arte</span>

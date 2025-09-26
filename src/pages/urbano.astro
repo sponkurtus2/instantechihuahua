@@ -6,54 +6,47 @@ import '../styles/global.css';
 const urbanPhotos = await Astro.glob('../content/photos/Urbano/*.md');
 ---
 
-<Layout title="Urbano - Chihuahua en el Instante">
-    <main>
-      <div class="container mx-auto px-4 py-8">
-        <div class="text-sm breadcrumbs">
-          <a href="/" class="hover:underline">Inicio</a>
-          →
-          <span>Urbano</span>
-        </div>
-
-        <header class="text-center my-12">
-          <h1 class="text-5xl font-extrabold text-gray-800 mb-2">Urbano</h1>
-          <p class="text-xl text-gray-600">La belleza urbana de Chihuahua capturada en el momento perfecto</p>
-          <div class="mt-4 inline-block bg-gray-100 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">
-            {urbanPhotos.length} fotografías
-          </div>
-        </header>
-
+<Layout title="Naturaleza - Chihuahua en el Instante">
+  <div class="container">
+    <header class="album-header">
+      <nav class="breadcrumb">
+        <a href="/" class="breadcrumb-link js-back-link">Inicio</a>
+        <span class="breadcrumb-separator">→</span>
+        <span class="breadcrumb-current">Urbano</span>
+      </nav>
+      
+      <div class="album-title-section">
+        <h1 class="album-title">Naturaleza</h1>
+        <p class="album-subtitle">La belleza natural de Chihuahua capturada en el momento perfecto</p>
       </div>
+    </header>
 
-      <section class="container mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {urbanPhotos.map((photo) => (
-            // Se usa la información cargada desde los archivos .md
-            // Nota: Se eliminó la lógica de 'aspectRatio' ya que no está en tus .md
-            <div class="relative group overflow-hidden rounded-lg shadow-lg">
+    <main class="album-content">
+      <div class="mosaic-container">
+        <div class="photo-mosaic">
+          {urbanPhotos.map((photo, index) => (
+            <div 
+              class={`mosaic-photo mosaic-photo--${photo.frontmatter.aspectRatio} clickable-photo`}
+            >
               <img 
-                src={photo.frontmatter.image} 
-                alt={photo.frontmatter.title} 
-                class="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110" 
-                loading="lazy"
+                src={photo.frontmatter.image}
+                alt={photo.frontmatter.title}
+                loading={index < 6 ? 'eager' : 'lazy'}
+                class="mosaic-image"
               />
-              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                <h3 class="text-white text-lg font-bold">{photo.frontmatter.title}</h3>
-              </div>
             </div>
           ))}
         </div>
-      </section>
-
-      <footer class="text-center py-12">
-        <div class="container mx-auto px-4">
-          <p class="text-lg text-gray-600 mb-4">Cada imagen cuenta una historia del momento presente</p>
-          <a href="/" class="text-blue-600 hover:underline font-semibold">
-            ← Volver al inicio
-          </a>
-        </div>
-      </footer>
+      </div>
     </main>
+
+    <footer class="album-footer">
+      <div class="footer-content">
+        <p class="footer-text">Cada imagen cuenta una historia del momento presente</p>
+        <a href="/" class="back-home js-back-link">← Volver al inicio</a>
+      </div>
+    </footer>
+  </div>
 </Layout>
 
 <style>
@@ -120,15 +113,6 @@ const urbanPhotos = await Astro.glob('../content/photos/Urbano/*.md');
     display: flex;
     justify-content: center;
     gap: 2rem;
-  }
-
-  .photo-count {
-    color: #888;
-    font-size: 0.9rem;
-    font-weight: 400;
-    padding: 0.5rem 1rem;
-    background: #f8f9fa;
-    border-radius: 20px;
   }
 
   /* Mosaic Styles */
@@ -313,3 +297,23 @@ const urbanPhotos = await Astro.glob('../content/photos/Urbano/*.md');
     will-change: auto;
   }
 </style>
+
+<script>
+  // Seleccionamos todos los contenedores de fotos que marcamos como "clicables"
+  const photoElements = document.querySelectorAll('.clickable-photo');
+
+  // Recorremos cada uno para agregarle el evento de click
+  photoElements.forEach(photoEl => {
+    photoEl.addEventListener('click', () => {
+      // Buscamos la etiqueta <img> dentro del contenedor al que se le dio click
+      const image = photoEl.querySelector('img');
+      if (image) {
+        // Obtenemos la ruta (src) de la imagen
+        const imageSrc = image.getAttribute('src');
+        
+        // Usamos la biblioteca basicLightbox para mostrar la imagen
+        basicLightbox.create(`<img src="${imageSrc}">`).show();
+      }
+    });
+  });
+</script>
