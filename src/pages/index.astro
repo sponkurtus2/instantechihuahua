@@ -28,8 +28,11 @@ const featuredPhotos = photos.slice(0, 3);
 <Layout title="Chihuahua en el Instante">
   <div class="container">
     <header class="header">
-      <h1>Chihuahua en el Instante</h1>
-      <p class="subtitle">Capturando la magia del momento presente</p>
+      <div class="header-content">
+        <h1>Chihuahua en el Instante</h1>
+        <p class="subtitle">Capturando la magia del momento presente</p>
+        <div class="header-divider"></div>
+      </div>
     </header>
 
     <main class="main-content">
@@ -97,26 +100,47 @@ const featuredPhotos = photos.slice(0, 3);
           <a href="#" class="category-card" data-category="naturaleza">
             <span class="category-icon">🌳</span>
             <span class="category-name">Naturaleza</span>
+            <span class="category-description">Paisajes y vida natural</span>
           </a>
           <a href="#" class="category-card" data-category="urbano">
             <span class="category-icon">🏙️</span>
             <span class="category-name">Urbano</span>
+            <span class="category-description">Arquitectura y ciudad</span>
           </a>
           <a href="#" class="category-card" data-category="gente">
             <span class="category-icon">👥</span>
             <span class="category-name">Gente</span>
+            <span class="category-description">Momentos humanos</span>
           </a>
           <a href="#" class="category-card" data-category="cultural">
             <span class="category-icon">🎭</span>
             <span class="category-name">Cultural</span>
+            <span class="category-description">Tradiciones y arte</span>
           </a>
+        </div>
+      </section>
+
+      <!-- Nueva sección de filosofía -->
+      <section class="philosophy-section">
+        <div class="philosophy-content">
+          <blockquote class="philosophy-quote">
+            "¿Quiénes somos cuando no nos estamos quejando? Cuando no nos estamos preocupando por el presente o el pasado, 
+            ¿quiénes somos cuando no estamos pensando, cuando simplemente realizamos una actividad y nos dejamos llevar?"
+          </blockquote>
+          <p class="philosophy-attribution">— Reflexión sobre el momento presente</p>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>Hecho con ❤️ en Chihuahua</p>
-      <a href="/acerca">Acerca de este proyecto</a>
+      <div class="footer-content">
+        <p class="footer-tagline">Hecho con ❤️ en Chihuahua</p>
+        <nav class="footer-nav">
+          <a href="/acerca" class="footer-link">Acerca de este proyecto</a>
+          <span class="footer-separator">•</span>
+          <a href="#" class="footer-link">Contacto</a>
+        </nav>
+      </div>
     </footer>
   </div>
 </Layout>
@@ -132,25 +156,39 @@ const featuredPhotos = photos.slice(0, 3);
   }
   
   .header {
+    padding: 4rem 0 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .header-content {
     text-align: center;
-    padding: 3rem 0 2rem;
-    border-bottom: 1px solid #eaeaea;
-    margin-bottom: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
   }
   
   h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 300;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     color: #333;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
+    line-height: 1.1;
   }
   
   .subtitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #666;
     font-style: italic;
-    margin: 0;
+    margin: 0 0 2rem;
+    font-weight: 300;
+  }
+
+  .header-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #4a6b8a, #8ba3c3);
+    margin: 0 auto;
+    border-radius: 1px;
   }
   
   .main-content {
@@ -159,84 +197,92 @@ const featuredPhotos = photos.slice(0, 3);
   
   .intro-text {
     max-width: 800px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 5rem;
     line-height: 1.7;
     color: #444;
     font-size: 1.1rem;
+    text-align: center;
   }
   
   .intro-text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
   }
   
+  .featured-section {
+    margin-bottom: 6rem;
+  }
+
   .section-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 300;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
     color: #333;
     position: relative;
+    letter-spacing: -0.5px;
   }
   
   .section-title::after {
     content: '';
     display: block;
-    width: 60px;
+    width: 80px;
     height: 2px;
     background: linear-gradient(90deg, #4a6b8a, #8ba3c3);
-    margin: 1rem auto;
+    margin: 1.5rem auto 0;
+    border-radius: 1px;
   }
   
   .mosaic-grid {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 4rem;
+    gap: 1.5rem;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
   
-    .mosaic-left {
-    flex: 1.2; /* Aumentado ligeramente para compensar el espacio vertical */
+  .mosaic-left {
+    flex: 1.2;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
-.mosaic-right {
-    flex: 0.8; /* Reducido para que ocupe menos espacio horizontal */
+  .mosaic-right {
+    flex: 0.8;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centrado horizontal */
+    justify-content: center;
   }
   
-.mosaic-item {
+  .mosaic-item {
     position: relative;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%; /* Ocupa toda la altura disponible */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
 
   .mosaic-left .mosaic-item {
-    height: calc(50% - 0.5rem); /* Mitad del espacio menos la mitad del gap */
+    height: calc(50% - 0.75rem);
     aspect-ratio: 4/3;
   }
   
   .mosaic-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
 
   .mosaic-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .mosaic-item:hover .mosaic-image {
-    transform: scale(1.03);
+    transform: scale(1.05);
   }
   
   .mosaic-overlay {
@@ -244,11 +290,11 @@ const featuredPhotos = photos.slice(0, 3);
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     color: white;
-    padding: 1rem 1rem 0.8rem;
+    padding: 2rem 1.5rem 1rem;
     transform: translateY(100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .mosaic-item:hover .mosaic-overlay {
@@ -257,11 +303,191 @@ const featuredPhotos = photos.slice(0, 3);
   
   .mosaic-overlay h3 {
     margin: 0;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
   }
 
+  /* Categories Section Styles */
+  .categories-section {
+    margin-bottom: 6rem;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 2rem;
+    background: white;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #f0f0f0;
+    min-height: 180px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4a6b8a, #8ba3c3);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+    border-color: #e0e0e0;
+  }
+
+  .category-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .category-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .category-card:hover .category-icon {
+    transform: scale(1.1);
+  }
+  
+  .category-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .category-description {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  /* Philosophy Section */
+  .philosophy-section {
+    margin-bottom: 6rem;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 20px;
+    position: relative;
+  }
+
+  .philosophy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+  .philosophy-quote {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #444;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .philosophy-quote::before,
+  .philosophy-quote::after {
+    content: '"';
+    font-size: 4rem;
+    color: #8ba3c3;
+    position: absolute;
+    font-family: Georgia, serif;
+  }
+
+  .philosophy-quote::before {
+    top: -1rem;
+    left: -2rem;
+  }
+
+  .philosophy-quote::after {
+    bottom: -2rem;
+    right: -2rem;
+  }
+
+  .philosophy-attribution {
+    color: #666;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  .footer {
+    padding: 4rem 0 3rem;
+    margin-top: 6rem;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  .footer-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .footer-tagline {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  .footer-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .footer-link {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+  
+  .footer-link:hover {
+    color: #4a6b8a;
+    background-color: #f8f9fa;
+  }
+
+  .footer-separator {
+    color: #ccc;
+    font-size: 0.8rem;
+  }
+
+  /* Responsive design */
   @media (max-width: 968px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
     .mosaic-grid {
       flex-direction: column;
       max-width: 500px;
@@ -272,142 +498,69 @@ const featuredPhotos = photos.slice(0, 3);
     }
     
     .mosaic-item {
-      max-height: 180px;
+      max-height: 200px;
     }
-  }
 
-  @media (max-width: 768px) {
-    .mosaic-grid {
-      max-width: 400px;
-    }
-    
-    .mosaic-item {
-      max-height: 160px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .mosaic-grid {
-      max-width: 300px;
-    }
-    
-    .mosaic-item {
-      max-height: 140px;
-      border-radius: 6px;
-    }
-    
-    .mosaic-overlay h3 {
-      font-size: 0.8rem;
-    }
-  }
-  
-  /* Categories Section Styles */
-  .categories-section {
-    margin-bottom: 5rem;
-  }
-  
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .category-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    background: white;
-    border-radius: 12px;
-    text-decoration: none;
-    color: #333;
-    transition: all 0.3s ease;
-    border: 1px solid #eaeaea;
-    min-height: 150px;
-  }
-  
-  .category-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-color: #4a6b8a;
-  }
-  
-  .category-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .category-name {
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-  
-  .footer {
-    text-align: center;
-    padding: 3rem 0;
-    margin-top: 4rem;
-    color: #888;
-    border-top: 1px solid #eaeaea;
-  }
-  
-  .footer p {
-    margin-bottom: 0.5rem;
-  }
-  
-  .footer a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .footer a:hover {
-    color: #4a6b8a;
-    text-decoration: underline;
-  }
-
-  /* Responsive design */
-  @media (max-width: 968px) {
-    .mosaic-grid {
-      flex-direction: column;
-    }
-    
-    .mosaic-right {
-      align-items: flex-start;
+    .philosophy-quote::before,
+    .philosophy-quote::after {
+      display: none;
     }
   }
 
   @media (max-width: 768px) {
     .header {
-      padding: 2rem 0 1.5rem;
+      padding: 3rem 0 2rem;
+      margin-bottom: 3rem;
     }
     
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
     
     .subtitle {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
     
     .section-title {
-      font-size: 1.75rem;
-      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      margin-bottom: 2.5rem;
     }
     
     .intro-text {
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
       font-size: 1rem;
     }
     
     .categories-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .category-card {
+      min-height: 160px;
+      padding: 2rem 1.5rem;
+    }
+
+    .philosophy-section {
+      margin-bottom: 4rem;
+      padding: 3rem 0;
+    }
+
+    .philosophy-quote {
+      font-size: 1.1rem;
+    }
+
+    .mosaic-grid {
+      max-width: 400px;
+    }
+    
+    .mosaic-item {
+      max-height: 180px;
     }
     
     .footer {
-      padding: 2rem 0;
-      margin-top: 3rem;
+      padding: 3rem 0 2rem;
+      margin-top: 4rem;
     }
   }
 
@@ -417,32 +570,76 @@ const featuredPhotos = photos.slice(0, 3);
     }
     
     .header {
-      padding: 1.5rem 0 1rem;
+      padding: 2rem 0 1.5rem;
+      margin-bottom: 2rem;
     }
     
     h1 {
-      font-size: 1.75rem;
+      font-size: 1.8rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
     }
     
     .section-title {
       font-size: 1.5rem;
+      margin-bottom: 2rem;
     }
     
     .categories-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
     
     .category-card {
-      min-height: 120px;
+      min-height: 140px;
       padding: 1.5rem;
     }
     
     .category-icon {
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
     
     .intro-text {
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .philosophy-section {
+      margin-bottom: 3rem;
+      padding: 2rem 0;
+    }
+
+    .philosophy-content {
+      padding: 0 1rem;
+    }
+
+    .philosophy-quote {
+      font-size: 1rem;
+    }
+
+    .mosaic-grid {
+      max-width: 300px;
+      gap: 1rem;
+    }
+    
+    .mosaic-item {
+      max-height: 160px;
+      border-radius: 8px;
+    }
+    
+    .mosaic-overlay h3 {
+      font-size: 0.9rem;
+    }
+
+    .footer-nav {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-separator {
+      display: none;
     }
   }
 
@@ -452,6 +649,10 @@ const featuredPhotos = photos.slice(0, 3);
   }
   
   .category-card {
+    will-change: transform;
+  }
+
+  .category-icon {
     will-change: transform;
   }
 </style>
